@@ -59,18 +59,18 @@ def main():
     g_scalar = torch.cuda.amp.GradScaler()
     d_scalar = torch.cuda.amp.GradScaler()
 
-    # for epoch in range(config.NUM_EPOCHS):
-    #     train(disc, gen, train_loader, opt_disc, opt_gen, L1, BCE, g_scalar, d_scalar)
-    #     if config.SAVE_MODEL and epoch % 1 == 0:
-    #         save_checkpoint(disc, opt_disc, config.CHECKPOINT_DISC)
-    #         save_checkpoint(gen, opt_gen, config.CHECKPOINT_GEN)
-    #     save_some_examples(gen, val_loader, epoch+112,
-    #    folder=r"C:\Users\ASUS\PycharmProjects\ImageColorization\netProgress")
+    for epoch in range(config.NUM_EPOCHS):
+        train(disc, gen, train_loader, opt_disc, opt_gen, L1, BCE, g_scalar, d_scalar)
+        if config.SAVE_MODEL and epoch % 1 == 0:
+            save_checkpoint(disc, opt_disc, config.CHECKPOINT_DISC)
+            save_checkpoint(gen, opt_gen, config.CHECKPOINT_GEN)
+        save_some_examples(gen, val_loader, epoch+112,
+       folder=r"C:\Users\ASUS\PycharmProjects\ImageColorization\netProgress")
 
 
-    lopp =tqdm(range(1), leave=True)
-    for x in lopp:
-        save_some_examples(gen, val_loader, x,folder=r"C:\Users\ASUS\PycharmProjects\ImageColorization\try")
+    # lopp =tqdm(range(1), leave=True)
+    # for x in lopp:
+    #     save_some_examples(gen, val_loader, x,folder=r"C:\Users\ASUS\PycharmProjects\ImageColorization\try")
 
 if __name__ == '__main__':
     main()
